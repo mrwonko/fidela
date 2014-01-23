@@ -1,0 +1,44 @@
+struct main
+{
+	Header header
+}
+
+struct Header
+{
+	uint<32> objCount
+	assert( objCount <= 1024 )
+	Obj objects[objCount]
+	struct Obj
+	{
+		char name[64]
+		enum objType : 32
+		{
+			player = 3,
+			projectile;
+			enemy = 45;
+		}
+		objType type
+		
+		if type in [player, enemy] then
+			int<32> health
+		endif
+		
+		case objType of
+			player:
+				int ammo
+			projectile:
+				Vector3f direction
+			enemy:
+				// nothing
+			default:
+				error( "Invalid objType: " .. objType )
+		esac // no.
+	}
+}
+
+type single = float<1,8,23> // probably built-in.
+
+struct Vector3f
+{
+	single element[3]
+}

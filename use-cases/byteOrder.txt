@@ -1,0 +1,14 @@
+struct main
+{
+	uint<8> bom[2]
+	if bom = [0xff, 0xfe] then
+		setByteOrder( LSB ) // = LittleEndian
+	elseif bom = [0xfe, 0xff]
+		setByteOrder( BigEndian ) // = BigEndian
+	else
+		// keep system(?) default
+		print( "No BOM" )
+	endif
+	
+	utf16 text[ _filesize - 16 ]
+}

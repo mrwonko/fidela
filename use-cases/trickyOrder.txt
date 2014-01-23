@@ -1,0 +1,13 @@
+struct main
+{
+	// This could work if the length is the same in all cases.
+	// But analyzing that seems hard, possibly impossible
+	if typeA then
+		single f
+	else
+		int32 i
+	end
+	// Maybe if this member's offset was explicitly defined?
+	bool8 typeA
+	padding( 24 ) // also possible: align(32)
+}

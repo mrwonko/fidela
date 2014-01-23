@@ -1,0 +1,13 @@
+struct bitmap
+{
+	uint<32> width
+	uint<32> height
+	assert( width > 0 and height > 0 )
+	uint<8> data[height][width][3]
+}
+
+struct main // capitalization? maybe accept both main and Main?
+{
+	bitmap b
+	print( "The bitmap has a width of {d}." % b.width ) // TODO: syntax?
+}
